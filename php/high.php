@@ -10,7 +10,7 @@ If two words score the same, return the word that appears earliest in the origin
 
 All letters will be lowercase and all inputs will be valid.
 */
-function high($x) {
+function my_high($x) {
     $x=strtolower($x);
     $alphachar = range('a', 'z');
     $high = 0;
@@ -24,9 +24,21 @@ function high($x) {
             $high = $sum;
             $selexted_word = $word;
         }
-        echo "$word: $sum\n";
     }
     return $selexted_word;
 }
+function high($x) {
+    $x=strtolower($x);
+    $lengthArray = array_map(function($word){
+        return array_sum(array_map(function($letter){
+            return ord($letter) - 96;
+        },str_split($word)));
+    },explode(" ",$x));
+    return explode(" ",$x)[array_keys($lengthArray, max($lengthArray))[0]];
+}
 //$this->high('taxi', high('man i need a taxi up to ubud'));
-high('aa b');
+echo high('man i need a taxi up to ubud')."\n";
+echo high('aa b')."\n";
+
+echo my_high('man i need a taxi up to ubud')."\n";
+echo my_high('aa b')."\n";
