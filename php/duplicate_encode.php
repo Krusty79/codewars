@@ -24,6 +24,15 @@ class MyTest extends TestCase
 }
 */
 
+function smart_duplicate_encode($word){
+    $word = str_split(strtolower($word));
+    $str = "";
+    foreach($word as $key){
+      (count(array_keys($word,$key))>1) ? $str .= ")" : $str .= "(";
+    } 
+    return $str;      
+  }
+
 function duplicate_encode($word){
 	// ...
     $income = $word = strtolower($word);
