@@ -30,5 +30,13 @@ function uniqueInOrder($iterable){
     return $ret;
   }
 
+  function ClerevUniqueInOrder($iterable){
+
+    return array_values(array_filter(
+        !is_array($iterable) ? str_split($iterable) : $iterable, 
+        function($v, $k) use ($iterable) {return ($k > 0 ? $v !== $iterable[$k-1] : true);}, 1
+    ));
+  }
+
   print_r([1,2,3]);
-  print_r(uniqueInOrder([1,2,3,4,5]));
+  print_r(uniqueInOrder([1,2,2,3,3]));
