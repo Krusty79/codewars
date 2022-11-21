@@ -19,6 +19,16 @@ class MyTest extends TestCase
 */
 
 function uniqueInOrder($iterable){
+  $iterable = is_string($iterable) ? str_split($iterable) : $iterable;
+  return !empty($iterable) ? array_values(array_filter($iterable,function($v,$k) use ($iterable) {
+    return $k > 0 ? $v !== $iterable[$k-1] : strlen($v) > 0;  
+  },1)) : [];
+}
+
+//print_r(uniqueInOrder('AAAABBBCCDAABBB'));
+print_r(uniqueInOrder('aasd'));
+
+function _uniqueInOrder($iterable){
     $iterable = is_array($iterable) ? implode($iterable) : $iterable;
     if(strlen($iterable) < 1) return [];
     $ret = str_split(preg_replace('/(.)\1{1,}/','$1',$iterable));
