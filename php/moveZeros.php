@@ -37,7 +37,16 @@ function moveZeros(array $items): array
     });
     return array_merge($items,$zeros);
 }
+
+function Clever1moveZeros(array $items): array {
+    return array_pad(array_filter($items, function($x){return $x !== 0 and $x !== 0.0;}), count($items), 0);
+}
+function Clever2moveZeros(array $items): array
+{
+  $ret = array_diff($items,[0]);
+  return array_merge($ret,array_fill(0,count($items)-count($ret),0));
+}
 //echo "[1,2,1,1,3,1,0,0,0,0]\n";
 //print_r(moveZeros([1,2,0,1,0,1,0,3,0,1]));
 echo "[a,b,c,d,1,1,3,1,9,9,0,0,0,0,0,0,0,0,0,0]\n";
-echo "[". implode(",",moveZeros(["a",0,0,"b","c","d",0,1,0,1,0,3,0,1,9,0,0,0,0,9]))."]\n";
+echo "[". implode(",",Clever1moveZeros(["a",0,0,"b","c","d",0,1,0,1,0,3,0,1,9,0,0,0,0,9]))."]\n";
