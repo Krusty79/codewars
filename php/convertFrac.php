@@ -56,19 +56,25 @@ function convertFrac($lst){
     if(empty($lst)){
         return "";
     }
-    $D = min($lst)[1];
+    $D = 1;//min($lst)[1];
+    
+    //die("D = [$D]");
     
     $i=sizeof($lst)-1;
     while($i > -1){
         $val = $lst[$i];
-        if(!is_integer($D/$val[1])){
+        $N_1 = (($val[0]/$val[1])*$D);
+        //$N_1 = 20.1321312321321;
+        if(/*!is_integer($D/$val[1])*/ strpos($N_1,".") > -1){
+            var_dump($N_1);
+            echo "Loop again: N_1 = [$N_1] : [".(strpos($N_1,"."))."] \n";
+            echo "$i: D = $D : $D/$val[1] = ".$D/$val[1]." | [".is_integer($D/$val[1])."] N_1 = [$N_1]\n";
             $D++;
             $i=sizeof($lst)-1;
-            echo "Loop again: ";
         }else{
             $i--;
+            echo "$i: D = $D : $D/$val[1] = ".$D/$val[1]." | [".is_integer($D/$val[1])."]\n";
         }
-        echo "$i: D = $D : $D/$val[1] = ".$D/$val[1]." | [".is_integer($D/$val[1])."]\n";
     }
     
     $lst = array_map(function($v) use($D){
@@ -93,4 +99,5 @@ echo "(262,524)(32,524)(393,524) => " . convertFrac($lst)."\n";
 
 $lst = [[7,8],[4,5],[4,5],[3,6]];
 $lst = [ [1, 2], [1, 3], [1, 4] ];
-echo "(35,40)(32,40)(32,40)(20,40) => " . convertFrac($lst)."\n";
+$lst = [ [26, 52], [76, 228], [31, 124] ];
+echo "(6,12)(4,12)(3,12) => " . convertFrac($lst)."\n";
