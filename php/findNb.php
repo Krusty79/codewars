@@ -61,3 +61,13 @@ print_r(preeg_filter([1,1,2,2,3,3,4]));
 
 print_r(filter('AAABBCCDAA'));
 print_r(filter([1,1,2,2,3,3,4]));
+
+$input = [
+    "It is 5 o'clock",
+    "40 days",
+    "No numbers here",
+    "In the year 2000"
+  ];
+  
+  $result = preg_filter('/[0-9]+/', '($0)', $input);
+  print_r($result);
