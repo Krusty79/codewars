@@ -51,6 +51,25 @@ class CommonDenominatorTest extends TestCase
     }
 }
 */
+function CleverConvertFrac($lst){
+    $D = 1;
+    
+    do {
+      $sN = "";
+      $initD = $D;
+      
+      foreach ($lst as $nd) {
+        if (($D * $nd[0]) % $nd[1] != 0) {
+          $D++;
+          break;
+        }
+        
+        $sN .= "(" . ($D * $nd[0] / $nd[1]) . "," . $D . ")";
+      }
+    } while ($D != $initD);
+    
+    return $sN;
+}
 
 function convertFrac($lst){
     if(empty($lst)){
@@ -100,4 +119,4 @@ echo "(262,524)(32,524)(393,524) => " . convertFrac($lst)."\n";
 $lst = [[7,8],[4,5],[4,5],[3,6]];
 $lst = [ [1, 2], [1, 3], [1, 4] ];
 $lst = [ [26, 52], [76, 228], [31, 124] ];
-echo "(6,12)(4,12)(3,12) => " . convertFrac($lst)."\n";
+echo "(6,12)(4,12)(3,12) => " . CleverConvertFrac($lst)."\n";
