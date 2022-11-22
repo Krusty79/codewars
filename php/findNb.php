@@ -47,11 +47,17 @@ function findNb($m) {
 
 echo findNb(135440716410000)." == -1\n";
 
+function preeg_filter($str){
+    return str_split(preg_replace('/(.)\1{1,}/','$1',is_string($str)?$str:implode($str)));
+}
 
 function filter($str){
     $arr = is_string($str) ? str_split($str) : $str;
     return array_filter($arr,function($v,$k) use($arr) {return $k == 0 ? true : $v !== $arr[$k-1];},1);
 }
 
-print_r(filter('AABBCCDAA'));
+print_r(preeg_filter('AAABBCCDAA'));
+print_r(preeg_filter([1,1,2,2,3,3,4]));
+
+print_r(filter('AAABBCCDAA'));
 print_r(filter([1,1,2,2,3,3,4]));
