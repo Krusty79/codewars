@@ -64,7 +64,7 @@ function josephus(array $items, int $k): array {
   do{
     if($i >= $len){
       $items = array_diff($items, $arr);
-      reset($items);
+      //reset($items);
       $len = count($items);
       $i=0;
     }
@@ -80,5 +80,5 @@ function josephus(array $items, int $k): array {
   return $arr;
 }
 
-echo "['e', 's', 'W', 'o', 'C', 'd', 'r', 'a']\n";
+echo "[e, s, W, o, C, d, r, a]\n";
 echo "[".implode(josephus(["C", "o", "d", "e", "W", "a", "r", "s"], 4),", ")."]\n";
