@@ -28,6 +28,27 @@ final class IsSolvedTest extends TestCase {
 }
 */
 
+function Clever_is_solved(array $board): int {
+
+    $solutions = [
+      $board[0][0] . $board[1][1] . $board[2][2], // Diagonal 1
+      $board[0][2] . $board[1][1] . $board[2][0], // Diagonal 2
+      $board[0][0] . $board[0][1] . $board[0][2], // Horizontal 1
+      $board[1][0] . $board[1][1] . $board[1][2], // Horizontal 2
+      $board[2][0] . $board[2][1] . $board[2][2], // Horizontal 3
+      $board[0][0] . $board[1][0] . $board[2][0], // Vertical 1
+      $board[0][1] . $board[1][1] . $board[2][1], // Vertical 2
+      $board[0][2] . $board[1][2] . $board[2][2]  // Vertical 3
+    ];
+    
+    if(in_array("111", $solutions)) return 1;
+    if(in_array("222", $solutions)) return 2;
+    foreach($solutions as $solution)
+      if(strpos($solution, "0")) return -1;
+    
+    return 0;
+  }
+
 function is_solved($board){
 
     /* Horizontal check */
