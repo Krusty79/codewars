@@ -49,36 +49,39 @@ class JosephusTest extends TestCase {
 }
 */
 function josephus(array $items, int $k): array {
-  /**
-  Execution Timed Out (12000 ms)
-  Why did my code time out?
-  Our servers are configured to only allow a certain amount of time for your code to execute. 
-  In rare cases the server may be taking on too much work and simply wasn't able to run your code efficiently 
-  enough. Most of the time though this issue is caused by inefficient algorithms. 
-  If you see this error multiple times you should try to optimize your code further.
-  **/
-  $i=0;
-  $index = 0;
+  $index = 1;
   $arr = [];
-  $len = count($items);
-  do{
-    if($i >= $len){
-      $items = array_diff($items, $arr);
-      //reset($items);
-      $len = count($items);
-      $i=0;
+  do {
+    foreach($items as $n=>$item){
+      if($index===$k){
+        $index = 1;
+        $arr[]=$item;
+        unset($items[$n]);
+      }else{
+        $index++;
+      }
     }
-    $element = $i === 0 ? current($items) : next($items);
-   
-    $index = $index === $k ? 1:$index+1;
-
-    if($index===$k && $element){
-      $arr[] = $element;
-    }
-    $i++;
-  } while (count($items)>0);
+  }while($items);
   return $arr;
 }
 
+function Clever_josephus(array $items, int $k): array {
+  $result = [];
+  $keyPos = 0;
+  while (count($items)) {
+      $keyPos = ($keyPos + $k - 1) % count($items);
+      $result[] = array_splice($items, $keyPos, 1)[0];
+  }
+  return $result;
+}
+
+echo "[3,6,2,7,5,1,4]\n";
+echo "[".implode(josephus([1,2,3,4,5,6,7], 3),",")."]\n";
+/*
 echo "[e, s, W, o, C, d, r, a]\n";
 echo "[".implode(josephus(["C", "o", "d", "e", "W", "a", "r", "s"], 4),", ")."]\n";
+*/
+//echo "[3,5,W,0,C,d,r,4]\n";
+//echo "[".implode(josephus(["C",0,"d",3,"W",4,"r",5], 4),",")."]\n";
+
+//echo "[".implode(josephus([true,false,true,false,true,false,true,false,1], 9),",")."]\n";
