@@ -276,13 +276,77 @@ function nextGeneration(array $grid, int $generations): array {
         return $future;
     }
 
+function _nextGeneration(array $cells, int $generations=1): array {
+    print_r(array_map(function($v){
+        return $v = "[".implode(",",$v)."]";
+    },$cells));
+    if($generations==0){
+        return $cells;
+    }
+    $generation = 0;
+    while($generation <= $generations){
+        $future = array_map(function($row,$y)use($cells){
+            return array_map(function($val,$x)use($y,$cells,$row){
+                
+                $row1 = isset($cells[$y-1]) ? $cells[$y-1] : [];
+                $row2 = isset($cells[$y+1]) ? $cells[$y+1] : [];
+    
+                $x1 = $x-1 < 0 ? 0 : $x-1;
+                $x2 = $x+2 > count($row) ? count($row) : $x+2;
+                
+                array_splice($row,$x2,count($row));
+                array_splice($row,0,$x1);
+                array_splice($row1,$x2,count($row1));
+                array_splice($row1,0,$x1);
+                array_splice($row2,$x2,count($row2));
+                array_splice($row2,0,$x1);
+    
+                $aliveNeighbours = count(array_filter($row1,function($v){return $v==1;}))+count(array_filter($row,function($v){return $v==1;}))+count(array_filter($row2,function($v){return $v==1;}));
+                if($val==1){
+                    $aliveNeighbours--;
+                }
+                //echo "$aliveNeighbours | $y:$x | [$x1-$x-$x2] [".implode(",",$row1)."],[".implode(",",$row)."][".implode(",",$row2)."]\n";
+                if($aliveNeighbours < 2){
+                    return 0;
+                }else if($aliveNeighbours > 3){
+                    return 0;
+                }else if($aliveNeighbours == 3){
+                    return 1;
+                }
+                //echo "[".implode(",",$row)."]\n";
+                return $val;
+            },$row,array_keys($row));
+        },$cells,array_keys($cells));
+        echo "Generation: $generation\n";
+        print_r(array_map(function($v){
+            return $v = "[".implode(",",$v)."]";
+        },$future));
+        $cells=$future;
+        $generation++;
+    }
+    return $cells;
+}
+
 $cells = [
-    [1,0,0],
-    [0,1,1],
-    [1,1,0]
+    [1,0,1,0,1,0],
+    [0,1,0,1,0,1],
+    [1,0,1,0,1,0],
+    [0,1,0,1,0,1],
+    [1,0,1,0,1,0],
+    [0,1,0,1,0,1],
 ];
 
-nextGeneration($cells,4);
+$cells = [
+    [1,0,0,1,1,1,1],
+    [1,0,0,1,0,0,0],
+    [1,0,0,1,0,0,0],
+    [1,1,1,1,1,1,1],
+    [0,0,0,1,0,0,1],
+    [0,0,0,1,0,0,1],
+    [1,1,1,1,0,0,1],
+];
+
+_nextGeneration($cells,4);
 
 die();
 
