@@ -78,8 +78,17 @@ function get_generation(array $cells, int $generations=1): array {
     if($generations==0){
         return $cells;
     }
-    $generation = 0;
+    $generation = 1;
     while($generation <= $generations){
+        
+        $cells = array_map(function($v){
+            array_unshift($v,0);
+            array_push($v,0);
+            return $v;
+        },$cells);
+        array_unshift($cells,array_fill(0,count($cells[0]),0));
+        array_push($cells,array_fill(0,count($cells[0]),0));
+        
         $future = array_map(function($row,$y)use($cells){
             return array_map(function($val,$x)use($y,$cells,$row){
                 
@@ -119,9 +128,57 @@ function get_generation(array $cells, int $generations=1): array {
         $cells=$future;
         $generation++;
     }
+    $x1 = count($cells[0]);
+    $x2 = 0;
+    $cells = array_filter($cells,function($row,$y){
+        $d = array_count_values($row)[0];
+        //echo "$y: $x [".implode(",",$row)."]=>[$d]=>".count($row)."\n";
+        return array_count_values($row)[0] !== count($row);
+    },1);
+    
+    foreach($cells as $y=>$row){
+        $_x1 = array_search(1,$row);
+        if($_x1 < $x1){
+            $x1=$_x1;
+        }
+        for($x=count($row)-1;$x>=0;$x--){
+            if($row[$x] == 1 && $x > $x2){
+                $x2=$x;
+            }
+            
+        }
+    }
+    foreach($cells as $y=>$row){
+        $_x1 = array_search(1,$row);
+        if($_x1 < $x1){
+            $x1=$_x1;
+        }
+        for($x=count($row)-1;$x>=0;$x--){
+            if($row[$x] == 1 && ($x-count($row)) > $x2){
+                $x2=$x;
+            }
+            
+        }
+    };
+    foreach($cells as $y=>$row){
+        $_x2=$x2;
+        //echo "$x1 $_x2 ".count($row)." [".implode(",",$row)."] => ";
+        array_splice($row,0,$x1);
+        $_x2=$x2-$x1-count($row)+1;
+        //echo "$x1 $_x2 ".count($row)." [".implode(",",$row)."] => ";
+        array_splice($row,$_x2);
+        //echo "[".implode(",",$row)."]\n";
+        $cells[$y]=$row;
+    }
     return $cells;
 }
-
+/*
+$cells = [
+    [1, 0, 1, 0, 1],
+    [0, 1, 1, 0, 1],
+    [1, 1, 0, 0, 0]
+];
+*/
 $cells = [
     [1, 0, 1],
     [0, 1, 1],
@@ -130,15 +187,10 @@ $cells = [
 
 
 $Expected=[
-    [0,1,0],
-    [0,0,1],
-    [0,1,1]
+    [0, 1, 0],
+    [0, 0, 1],
+    [1, 1, 1]
 ];
-
-
-$Expected = [[1,0,1],
-[0,1,1],
-[0,1,0]];
 echo "cells:\n";
 print_r(array_map(function($v){
     return $v = "[".implode(",",$v)."]";
@@ -146,7 +198,7 @@ print_r(array_map(function($v){
 echo "Last Generation:\n";
 print_r(array_map(function($v){
     return $v = "[".implode(",",$v)."]";
-},get_generation($cells, 4)));
+},get_generation($cells, 1)));
 
 echo "Expected:\n";
 print_r(array_map(function($v){

@@ -378,70 +378,16 @@ function get_generation(array $cells, int $generations=1): array {
 }
 
 $cells = [
-    [1,0,1,0,1,0],
-    [0,1,0,1,0,1],
-    [1,0,1,0,1,0],
-    [0,1,0,1,0,1],
-    [1,0,1,0,1,0],
-    [0,1,0,1,0,1],
+    [1, 0, 1],
+    [0, 1, 1],
+    [1, 1, 0]
 ];
-
-$cells = [
-    [1,0,0,1,1,1,1],
-    [1,0,0,1,0,0,0],
-    [1,0,0,1,0,0,0],
-    [1,1,1,1,1,1,1],
-    [0,0,0,1,0,0,1],
-    [0,0,0,1,0,0,1],
-    [1,1,1,1,0,0,1],
-];
-$cells = [
-    [1,0,1],
-    [0,1,1],
-    [1,1,0],
-];
-/*
-$cells = [
-    [0,0,0],
-    [1,0,1],
-    [0,1,1],
-];
-*/
-$Expected = [
-    [1,0,1],
-    [0,1.1],
-    [0,1,0],
-];
-$nextGeneration = get_generation([[1, 0, 1],
-[0, 1, 1],
-[1, 1, 0]],1);
-/*
-echo "cells:\n";
-print_r(array_map(function($v){
-    return $v = "[".implode(",",$v)."]";
-},$cells));
-*/
-echo "Expected:\n";
-print_r(array_map(function($v){
-    return $v = "[".implode(",",$v)."]";
-},$Expected));
-echo "nextGeneration:\n";
-print_r(array_map(function($v){
-    return $v = "[".implode(",",$v)."]";
-},$nextGeneration));
-
-die();
 
 $Expected=[
-    [0,1,0],
-    [0,0,1],
-    [0,1,1]
+    [0, 1, 0],
+    [0, 0, 1],
+    [1, 1, 1]
 ];
-
-
-$Expected = [[1,0,1],
-[0,1,1],
-[0,1,0]];
 echo "cells:\n";
 print_r(array_map(function($v){
     return $v = "[".implode(",",$v)."]";
@@ -449,19 +395,9 @@ print_r(array_map(function($v){
 echo "Last Generation:\n";
 print_r(array_map(function($v){
     return $v = "[".implode(",",$v)."]";
-},get_generation($cells, 4)));
+},get_generation($cells, 1)));
 
 echo "Expected:\n";
 print_r(array_map(function($v){
     return $v = "[".implode(",",$v)."]";
 },$Expected));
-
-/*
-
-print_r(array_map(function($v){
-    return $v = "[".implode(",",$v)."]";
-},get_generation([
-    [0,1,0],
-    [0,0,1],
-    [1,1,1]], 1)));
-*/
