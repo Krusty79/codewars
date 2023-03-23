@@ -1,5 +1,12 @@
-import openai,re,sys
-openai.api_key="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"
+import openai,re,sys,json
+  
+f = open('config.json')
+config = json.load(f)
+
+openai.api_key=config['openai']['api_key']
+# Closing file
+f.close()
+
 """
 response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
