@@ -21,10 +21,12 @@ maskify("Nananananananananananananananana Batman!") == "########################
 """
 
 # return masked string
-def maskify(cc): 
+def _maskify(cc): 
     return cc[-4:].rjust(len(cc), '#')
+
+clever_maskify=(lambda c:('#'*(len(c)-4)+c[-4:]))
 
 print(maskify("4556364607935616"), "==", "############5616")
 print(maskify(     "64607935616"), "==",      "#######5616")
 print(maskify(               "1"), "==",                "1")
-print(maskify(                "123"), "==",                 "123")
+print(maskify(               "123"), "==",            "123")
