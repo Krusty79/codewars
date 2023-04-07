@@ -19,8 +19,7 @@ def sort_array(source_array):
     odd = sorted(filter(lambda x:x%2,source_array))
     for i,e in enumerate(map(lambda x : x if not x % 2 else "x", source_array)):
         if e == 'x':
-            source_array[i] = odd[0]
-            odd.pop(0)
+            source_array[i] = odd.pop()
     return source_array
 
 def clever_sort_array(arr):
