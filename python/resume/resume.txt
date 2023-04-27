@@ -1,0 +1,59 @@
+Roman Stoliarov
+United States
+Skype ID: romaintegrio
+Email: romaintegrio@gmail.com
+
+Objective:
+Seeking a position as a Middle Web/PHP/Angular Developer in a challenging and dynamic environment.
+
+Skills:
+• Back-end: LAMP
+• Front-end: HTML/CSS/JS
+• AWS Services (EC2/Glacier/S3/Cloud Front) management
+• Git/Linux/Shell/Bash
+
+Experience:
+2013-2023 Konductor
+Full stack front-end LAMP/back-end Angular Developer
+• Proimagegutters – services support and development
+• Wordpress plugins support and development
+• AirCanada – front-end HTML/CSS/JS support and development
+• Konductor.com/Konductor.net – support and development
+
+2011-2015 Konductor
+Adobe AIR Action Script Developer
+• Development and support
+• Obtained skills: JS/Flex AIR
+• Tortoiseadvisors sites group:
+• AWS/PHP/MySQL/HTML/CSS/JS
+
+2009-2011 Integrio Systems
+Flex AIR and PHP Developer
+• Development and support for Konductor.net AIR Application
+• Obtained skills: Flex AIR, PHP, MySQL
+• PHP development and support for Integrio and Konductor
+• Web site templates development and support for Xplorex content management system
+• Content updating, template development for projects based on open source CMS (Drupal, Joomla, Wordpress)
+• Obtained skills: block/table-based template development, XSLT, JavaScript, PHP, MySQL
+
+2008-2010 Integrio Systems
+Web and Flash Developer
+• Xplorex support manager
+• Obtained conversational and written English skills
+
+2006-2008 Integrio Systems
+Web and Flash Developer
+• Web site templates development and support for Xplorex content management system
+• Content updating, template development for projects based on open source CMS (Drupal, Joomla, Wordpress)
+• Over 100 site templates created and supported
+• Obtained skills: block/table-based template development, XSLT, JavaScript, PHP, MySQL
+
+Education:
+2015-2017 Kharkiv National University of Radio Electronics
+• Specialty: Software Engineer
+• Bachelor Degree
+
+1998-2003 Ukrainian Sea Nautical University by Makarov
+• Technology Engineer
+• Specialty: Ship Building
+• Bachelor Degree

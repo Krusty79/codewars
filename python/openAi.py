@@ -42,8 +42,8 @@ completion = openai.Completion.create(
     stop=None,
     temperature=0.5,
 )
-
+print(prompt)
 for resp in completion.choices:
-    print('<p>{0}</p>'.format(re.sub(r"[\n\t]*", "", resp.text)))
+    print("<p>{0}</p>\n".format(resp.text))#re.sub(r"[\n\t]*", "", resp.text)))
 
 #.replace("\n", " ")
