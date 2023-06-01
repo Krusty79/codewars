@@ -26,10 +26,11 @@ result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", 
 
 
 def strip_comments(strng, markers):
-    pass
+    # return min(list(map(lambda x:len(x),s.split()))) or len(s) # l: shortest word length
+    return '"'+('\n'.join(map(lambda x: x[:x.find(markers[0])][:x.find(markers[1])]+"["+str(x.find(markers[0]))+":"+str(x.find(markers[1]))+"]", strng.split('\n')))).rstrip()+'"'
 
 
-print(strip_comments('apples, pears # and bananas\ngrapes\nbananas !apples',
-      ['#', '!']), 'apples, pears\ngrapes\nbananas')
-print(strip_comments('a #b\nc\nd $e f g', ['#', '$']), 'a\nc\nd')
-print(strip_comments(' a #b\nc\nd $e f g', ['#', '$']), ' a\nc\nd')
+print(strip_comments('apples, pears # and bananas\ngrapes\nbananas !apples', [
+      '#', '!']), 'apples, pears\ngrapes\nbananas')
+# print(strip_comments('a #b\nc\nd $e f g', ['#', '$']), 'a\nc\nd')
+# print(strip_comments(' a #b\nc\nd $e f g', ['#', '$']), ' a\nc\nd')

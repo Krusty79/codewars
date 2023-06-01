@@ -1,0 +1,15 @@
+/var/www/projects/codewars/c#/codewars/bin/Debug/net7.0/codewars
+/var/www/projects/codewars/c#/codewars/bin/Debug/net7.0/codewars.deps.json
+/var/www/projects/codewars/c#/codewars/bin/Debug/net7.0/codewars.runtimeconfig.json
+/var/www/projects/codewars/c#/codewars/bin/Debug/net7.0/codewars.dll
+/var/www/projects/codewars/c#/codewars/bin/Debug/net7.0/codewars.pdb
+/var/www/projects/codewars/c#/codewars/obj/Debug/net7.0/codewars.csproj.AssemblyReference.cache
+/var/www/projects/codewars/c#/codewars/obj/Debug/net7.0/codewars.GeneratedMSBuildEditorConfig.editorconfig
+/var/www/projects/codewars/c#/codewars/obj/Debug/net7.0/codewars.AssemblyInfoInputs.cache
+/var/www/projects/codewars/c#/codewars/obj/Debug/net7.0/codewars.AssemblyInfo.cs
+/var/www/projects/codewars/c#/codewars/obj/Debug/net7.0/codewars.csproj.CoreCompileInputs.cache
+/var/www/projects/codewars/c#/codewars/obj/Debug/net7.0/codewars.dll
+/var/www/projects/codewars/c#/codewars/obj/Debug/net7.0/refint/codewars.dll
+/var/www/projects/codewars/c#/codewars/obj/Debug/net7.0/codewars.pdb
+/var/www/projects/codewars/c#/codewars/obj/Debug/net7.0/codewars.genruntimeconfig.cache
+/var/www/projects/codewars/c#/codewars/obj/Debug/net7.0/ref/codewars.dll
